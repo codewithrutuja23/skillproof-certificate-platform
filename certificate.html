@@ -1,0 +1,58 @@
+<div class="task">
+    <div>
+        <h3>Task 5 — Final Assessment 📝</h3>
+        <p>Pass the final assessment to complete the course.</p>
+    </div>
+
+    <button class="complete-btn" onclick="startAssessment()">
+        Start Assessment
+    </button>
+<script>
+
+let completedTasks = 0;
+
+function completeTask(button) {
+
+    if (button.classList.contains("completed")) {
+        return;
+    }
+
+    button.classList.add("completed");
+    button.innerText = "✓ Completed";
+
+    completedTasks++;
+
+    let percentage = (completedTasks / 5) * 100;
+
+    document.getElementById("progressBar").style.width =
+        percentage + "%";
+
+    document.getElementById("progressPercent").innerText =
+        percentage + "%";
+
+    if (completedTasks === 5) {
+        document.getElementById("certificateBtn").style.display =
+            "block";
+    }
+}
+
+
+function startAssessment() {
+    window.location.href = "assessment.html";
+}
+
+
+function generateCertificate() {
+
+    let name = prompt("Enter your name:");
+
+    if (name && name.trim() !== "") {
+
+        localStorage.setItem("studentName", name);
+
+        window.location.href = "certificate-final.html";
+
+    }
+}
+
+</script>
